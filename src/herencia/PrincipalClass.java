@@ -13,6 +13,8 @@ public class PrincipalClass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -27,6 +29,9 @@ public class PrincipalClass {
         
         principalWindow.setExtendedState(principalWindow.MAXIMIZED_BOTH);
         principalWindow.setVisible(true);
+        
+        
+        
     }
     
 }

@@ -100,6 +100,27 @@
             "Tamaño" : "Medio"
         }
     
+    ],
+    "Combos" : [
+        {
+            "Nombre" : "Combo 1",
+            "Bebida" : "1",
+            "Acompañamiento" : "7",
+            "Plato Fuerte" : "10"
+        },
+        {
+            "Nombre" : "Combo 2",
+            "Bebida" : "3",
+            "Acompañamiento" : "5",
+            "Plato Fuerte" : "9"
+        },
+        {
+            "Nombre" : "Combo 3",
+            "Bebida" : "2",
+            "Acompañamiento" : "6",
+            "Plato Fuerte" : "11"
+        }
+        
     ]
    
     

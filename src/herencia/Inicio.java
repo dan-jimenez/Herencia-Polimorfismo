@@ -1,21 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package herencia;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import javax.swing.JFrame;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 /**
  *
  * @author Danny Jimenez
  */
-public class Inicio extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Inicio
-     */
+public class Inicio extends JFrame {
+    
+    
     public Inicio() {
         initComponents();
+        
     }
 
     /**
@@ -28,10 +32,16 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         pMain = new javax.swing.JPanel();
+        pLeft = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tMenu = new javax.swing.JTextArea();
+        bCargarMenu = new javax.swing.JButton();
+        lCanClientes = new javax.swing.JLabel();
+        eClientes = new javax.swing.JTextField();
+        bCrearClientes = new javax.swing.JButton();
+        pCenter = new javax.swing.JPanel();
         pRight = new javax.swing.JPanel();
         bExit = new javax.swing.JButton();
-        pLeft = new javax.swing.JPanel();
-        pCenter = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -53,50 +63,80 @@ public class Inicio extends javax.swing.JFrame {
 
         pMain.setBackground(new java.awt.Color(25, 59, 45));
 
-        pRight.setBackground(new java.awt.Color(26, 184, 120));
-
-        bExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
-        bExit.setMnemonic('x');
+        pLeft.setBackground(new java.awt.Color(26, 184, 120));
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("herencia/Bundle"); // NOI18N
-        bExit.setText(bundle.getString("Inicio.bExit.text")); // NOI18N
-        bExit.setBorder(null);
-        bExit.setBorderPainted(false);
-        bExit.setContentAreaFilled(false);
-        bExit.addActionListener(new java.awt.event.ActionListener() {
+        pLeft.setToolTipText(bundle.getString("Inicio.pLeft.toolTipText")); // NOI18N
+
+        tMenu.setEditable(false);
+        tMenu.setBackground(new java.awt.Color(26, 184, 120));
+        tMenu.setColumns(20);
+        tMenu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        tMenu.setForeground(new java.awt.Color(255, 255, 255));
+        tMenu.setLineWrap(true);
+        tMenu.setRows(5);
+        tMenu.setAutoscrolls(false);
+        tMenu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(25, 59, 45), 2, true));
+        tMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(tMenu);
+
+        bCargarMenu.setBackground(new java.awt.Color(255, 255, 255));
+        bCargarMenu.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bCargarMenu.setText(bundle.getString("Inicio.bCargarMenu.text")); // NOI18N
+        bCargarMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        bCargarMenu.setBorderPainted(false);
+        bCargarMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bExitActionPerformed(evt);
+                bCargarMenuActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout pRightLayout = new javax.swing.GroupLayout(pRight);
-        pRight.setLayout(pRightLayout);
-        pRightLayout.setHorizontalGroup(
-            pRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pRightLayout.createSequentialGroup()
-                .addContainerGap(371, Short.MAX_VALUE)
-                .addComponent(bExit)
-                .addContainerGap())
-        );
-        pRightLayout.setVerticalGroup(
-            pRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pRightLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(bExit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lCanClientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lCanClientes.setForeground(new java.awt.Color(255, 255, 255));
+        lCanClientes.setText(bundle.getString("Inicio.lCanClientes.text")); // NOI18N
 
-        pLeft.setBackground(new java.awt.Color(26, 184, 120));
-        pLeft.setToolTipText(bundle.getString("Inicio.pLeft.toolTipText")); // NOI18N
+        eClientes.setText(bundle.getString("Inicio.eClientes.text")); // NOI18N
+
+        bCrearClientes.setBackground(new java.awt.Color(255, 255, 255));
+        bCrearClientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bCrearClientes.setText(bundle.getString("Inicio.bCrearClientes.text")); // NOI18N
+        bCrearClientes.setBorder(null);
+        bCrearClientes.setBorderPainted(false);
 
         javax.swing.GroupLayout pLeftLayout = new javax.swing.GroupLayout(pLeft);
         pLeft.setLayout(pLeftLayout);
         pLeftLayout.setHorizontalGroup(
             pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGroup(pLeftLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addGroup(pLeftLayout.createSequentialGroup()
+                        .addComponent(bCargarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pLeftLayout.createSequentialGroup()
+                                .addComponent(eClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLeftLayout.createSequentialGroup()
+                                .addComponent(lCanClientes)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                        .addGap(18, 18, 18)
+                        .addComponent(bCrearClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         pLeftLayout.setVerticalGroup(
             pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 872, Short.MAX_VALUE)
+            .addGroup(pLeftLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lCanClientes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bCargarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCrearClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         pCenter.setBackground(new java.awt.Color(26, 184, 120));
@@ -112,14 +152,45 @@ public class Inicio extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        pRight.setBackground(new java.awt.Color(26, 184, 120));
+
+        bExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
+        bExit.setMnemonic('x');
+        bExit.setText(bundle.getString("Inicio.bExit.text")); // NOI18N
+        bExit.setBorder(null);
+        bExit.setBorderPainted(false);
+        bExit.setContentAreaFilled(false);
+        bExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pRightLayout = new javax.swing.GroupLayout(pRight);
+        pRight.setLayout(pRightLayout);
+        pRightLayout.setHorizontalGroup(
+            pRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pRightLayout.createSequentialGroup()
+                .addContainerGap(349, Short.MAX_VALUE)
+                .addComponent(bExit)
+                .addContainerGap())
+        );
+        pRightLayout.setVerticalGroup(
+            pRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pRightLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bExit)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout pMainLayout = new javax.swing.GroupLayout(pMain);
         pMain.setLayout(pMainLayout);
         pMainLayout.setHorizontalGroup(
             pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pMainLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(2, 2, 2)
                 .addComponent(pLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
+                .addGap(18, 18, 18)
                 .addComponent(pCenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -166,16 +237,115 @@ public class Inicio extends javax.swing.JFrame {
     private void bExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bExitActionPerformed
        System.exit(0);
     }//GEN-LAST:event_bExitActionPerformed
+     /* 
+    
+    En el boton Cargar se hace la carga del menu a partir del archivo .Json
+    que antes esta predefinido
+    */
+    private void bCargarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCargarMenuActionPerformed
+        
+        JSONParser parser = new JSONParser();
+        try{
+            Object menu = parser.parse(new FileReader("menu.json"));
+            JSONObject jsonMenu = (JSONObject) menu;
+            JSONArray bebidas = (JSONArray) jsonMenu.get("Bebidas");
+            JSONArray platoFuerte = (JSONArray) jsonMenu.get("Platos Fuertes");
+            JSONArray acompañamientos = (JSONArray) jsonMenu.get("Acompañamientos");
+            /*
+            En esta parte obtiene la parte de bebidas del menu
+            */
+            tMenu.append("\n\n" +
+                    " - - - - - - - - - - - - - - - - - - - - "
+                    + " Bebidas "
+                    + "- - - - - - - - - - - - - - - - - - -\n" +
+                    " Nombre - - - Codigo - - - Precio - - - Tamaño - - - Tipo\n" 
+                    + " - - - - - - - - - - - - - - - - - - - - - - - "
+                    + "- - - - - - - - - - - - - - - - - - - - - - - \n");
+            
 
-    /**
-     * @param args the command line arguments
-     */
+            for (int i = 0; i < bebidas.size() ; i++){
+                JSONObject jsonBebida = (JSONObject) bebidas.get(i);
+                String sBebida = (String) jsonBebida.get("Nombre");
+                tMenu.append(sBebida + " -- ");
+                sBebida = (String) jsonBebida.get("Codigo");
+                tMenu.append(sBebida + " -- ");
+                sBebida = (String) jsonBebida.get("Precio");
+                tMenu.append("₡" + sBebida  + " -- ");
+                sBebida = (String) jsonBebida.get("Tamaño");
+                tMenu.append(sBebida + " -- ");
+                sBebida = (String) jsonBebida.get("Tipo");
+                tMenu.append(sBebida);
+                tMenu.append("\n");
+               
+            }
+            tMenu.append("\n");
+            
+            /*
+            En esta parte obtiene la parte de Platos Fuertes del menu
+            */
+            
+            
+            tMenu.append(" - - - - - - - - - - - - - - - - -"
+                    + " Platos Fuertes "
+                    + "- - - - - - - - - - - - - - - - -"
+                    + " Nombre - - - Codigo - - - Precio - - - Tamaño \n" 
+                    + " - - - - - - - - - - - - - - - - - - - - - - - "
+                    + "- - - - - - - - - - - - - - - - - - - - - - - \n");
+            
+            for (int i = 0; i < platoFuerte.size() ; i++){
+                JSONObject jsonPFuerte = (JSONObject) platoFuerte.get(i);
+                String sPFuerte = (String) jsonPFuerte.get("Nombre");
+                tMenu.append(sPFuerte + " -- ");
+                sPFuerte = (String) jsonPFuerte.get("Codigo");
+                tMenu.append(sPFuerte + " -- ");
+                sPFuerte = (String) jsonPFuerte.get("Precio");
+                tMenu.append("₡" + sPFuerte  + " -- ");
+                sPFuerte = (String) jsonPFuerte.get("Tamaño");
+                tMenu.append(sPFuerte);
+                tMenu.append("\n");
+
+            }
+            tMenu.append("\n");
+            
+            /*
+            En esta parte obtiene la parte de Acompañamientos del menu
+            */
+            tMenu.append(" - - - - - - - - - - - - - - - - "
+                    + " Acompañamientos "
+                    + "- - - - - - - - - - - - - - - "
+                    + " Nombre - - - Codigo - - - Precio - - - Tipo \n" 
+                    + " - - - - - - - - - - - - - - - - - - - - - - - "
+                    + "- - - - - - - - - - - - - - - - - - - - - - - \n");
+            
+            for (int i = 0; i < acompañamientos.size() ; i++){
+                JSONObject jsonAcompañamiento = (JSONObject) acompañamientos.get(i);
+                String sAcompañamiento = (String) jsonAcompañamiento.get("Nombre");
+                tMenu.append(sAcompañamiento + " -- ");
+                sAcompañamiento = (String) jsonAcompañamiento.get("Codigo");
+                tMenu.append(sAcompañamiento + " -- ");
+                sAcompañamiento = (String) jsonAcompañamiento.get("Precio");
+                tMenu.append("₡" + sAcompañamiento  + " -- ");
+                sAcompañamiento = (String) jsonAcompañamiento.get("Tipo");
+                tMenu.append(sAcompañamiento);
+                tMenu.append("\n");
+            }
+            tMenu.append("\n"); 
+        } catch (FileNotFoundException e){}
+        catch (IOException | ParseException e) {}
+    }//GEN-LAST:event_bCargarMenuActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton bCargarMenu;
+    public javax.swing.JButton bCrearClientes;
     public javax.swing.JButton bExit;
+    public javax.swing.JTextField eClientes;
+    public javax.swing.JScrollPane jScrollPane1;
+    public javax.swing.JLabel lCanClientes;
     public javax.swing.JPanel pCenter;
     public javax.swing.JPanel pLeft;
     public javax.swing.JPanel pMain;
     public javax.swing.JPanel pRight;
+    public javax.swing.JTextArea tMenu;
     // End of variables declaration//GEN-END:variables
 }
