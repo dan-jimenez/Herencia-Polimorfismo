@@ -1,10 +1,7 @@
-package claseclientes;
+package herencia;
 
 
 import java.util.Random;
-
-
-
 
 
 public class Cliente {

@@ -1,5 +1,5 @@
 
-package claseclientes;
+package herencia;
 
 
 public class ClienteEspecial extends Cliente {

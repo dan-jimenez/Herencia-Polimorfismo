@@ -27,7 +27,7 @@ public class PrincipalClass {
         }
         
         
-        principalWindow.setExtendedState(principalWindow.MAXIMIZED_BOTH);
+        //principalWindow.setExtendedState(principalWindow.MAXIMIZED_BOTH);
         principalWindow.setVisible(true);
         
         

@@ -4,6 +4,8 @@ package herencia;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.Queue;
 import javax.swing.JFrame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -16,7 +18,7 @@ import org.json.simple.parser.ParseException;
  */
 public class Inicio extends JFrame {
     
-    
+    private  Queue <Cliente> colaCliente;
     public Inicio() {
         initComponents();
         
@@ -39,6 +41,8 @@ public class Inicio extends JFrame {
         lCanClientes = new javax.swing.JLabel();
         eClientes = new javax.swing.JTextField();
         bCrearClientes = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         pCenter = new javax.swing.JPanel();
         pRight = new javax.swing.JPanel();
         bExit = new javax.swing.JButton();
@@ -75,7 +79,7 @@ public class Inicio extends JFrame {
         tMenu.setLineWrap(true);
         tMenu.setRows(5);
         tMenu.setAutoscrolls(false);
-        tMenu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(25, 59, 45), 2, true));
+        tMenu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 2, true));
         tMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(tMenu);
 
@@ -94,13 +98,32 @@ public class Inicio extends JFrame {
         lCanClientes.setForeground(new java.awt.Color(255, 255, 255));
         lCanClientes.setText(bundle.getString("Inicio.lCanClientes.text")); // NOI18N
 
+        eClientes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        eClientes.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         eClientes.setText(bundle.getString("Inicio.eClientes.text")); // NOI18N
+        eClientes.setToolTipText(bundle.getString("Inicio.eClientes.toolTipText")); // NOI18N
+        eClientes.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 1, 0));
 
         bCrearClientes.setBackground(new java.awt.Color(255, 255, 255));
         bCrearClientes.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         bCrearClientes.setText(bundle.getString("Inicio.bCrearClientes.text")); // NOI18N
         bCrearClientes.setBorder(null);
         bCrearClientes.setBorderPainted(false);
+        bCrearClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCrearClientesActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton1.setText(bundle.getString("Inicio.jButton1.text")); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/icon.png"))); // NOI18N
+        jLabel1.setText(bundle.getString("Inicio.jLabel1.text")); // NOI18N
 
         javax.swing.GroupLayout pLeftLayout = new javax.swing.GroupLayout(pLeft);
         pLeft.setLayout(pLeftLayout);
@@ -109,34 +132,42 @@ public class Inicio extends JFrame {
             .addGroup(pLeftLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addGroup(pLeftLayout.createSequentialGroup()
-                        .addComponent(bCargarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(pLeftLayout.createSequentialGroup()
-                                .addComponent(eClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12))
+                                .addGap(139, 139, 139)
+                                .addComponent(lCanClientes))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pLeftLayout.createSequentialGroup()
-                                .addComponent(lCanClientes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                                .addComponent(bCargarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(eClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(bCrearClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(pLeftLayout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pLeftLayout.setVerticalGroup(
             pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pLeftLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lCanClientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bCargarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bCargarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bCrearClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(280, Short.MAX_VALUE))
+                    .addComponent(bCrearClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(192, Short.MAX_VALUE))
         );
 
         pCenter.setBackground(new java.awt.Color(26, 184, 120));
@@ -171,7 +202,7 @@ public class Inicio extends JFrame {
         pRightLayout.setHorizontalGroup(
             pRightLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pRightLayout.createSequentialGroup()
-                .addContainerGap(349, Short.MAX_VALUE)
+                .addContainerGap(352, Short.MAX_VALUE)
                 .addComponent(bExit)
                 .addContainerGap())
         );
@@ -188,13 +219,13 @@ public class Inicio extends JFrame {
         pMainLayout.setHorizontalGroup(
             pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pMainLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
+                .addContainerGap()
                 .addComponent(pLeft, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(10, 10, 10)
                 .addComponent(pCenter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pRight, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18))
+                .addContainerGap())
         );
         pMainLayout.setVerticalGroup(
             pMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,94 +276,116 @@ public class Inicio extends JFrame {
     private void bCargarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCargarMenuActionPerformed
         
         JSONParser parser = new JSONParser();
-        try{
-            Object menu = parser.parse(new FileReader("menu.json"));
-            JSONObject jsonMenu = (JSONObject) menu;
-            JSONArray bebidas = (JSONArray) jsonMenu.get("Bebidas");
-            JSONArray platoFuerte = (JSONArray) jsonMenu.get("Platos Fuertes");
-            JSONArray acompañamientos = (JSONArray) jsonMenu.get("Acompañamientos");
-            /*
-            En esta parte obtiene la parte de bebidas del menu
-            */
-            tMenu.append("\n\n" +
-                    " - - - - - - - - - - - - - - - - - - - - "
-                    + " Bebidas "
-                    + "- - - - - - - - - - - - - - - - - - -\n" +
-                    " Nombre - - - Codigo - - - Precio - - - Tamaño - - - Tipo\n" 
-                    + " - - - - - - - - - - - - - - - - - - - - - - - "
-                    + "- - - - - - - - - - - - - - - - - - - - - - - \n");
-            
+        
+        if (tMenu.getText().length() == 0){
+            try{
+                Object menu = parser.parse(new FileReader("menu.json"));
+                JSONObject jsonMenu = (JSONObject) menu;
+                JSONArray bebidas = (JSONArray) jsonMenu.get("Bebidas");
+                JSONArray platoFuerte = (JSONArray) jsonMenu.get("Platos Fuertes");
+                JSONArray acompañamientos = (JSONArray) jsonMenu.get("Acompañamientos");
+                /*
+                En esta parte obtiene la parte de bebidas del menu
+                */
+                tMenu.append("\n\n" +
+                        " - - - - - - - - - - - - - - - - - - - - "
+                        + " Bebidas "
+                        + "- - - - - - - - - - - - - - - - - - -\n" +
+                        " Nombre - - - Codigo - - - Precio - - - Tamaño - - - Tipo\n" 
+                        + " - - - - - - - - - - - - - - - - - - - - - - - "
+                        + "- - - - - - - - - - - - - - - - - - - - - - - \n");
 
-            for (int i = 0; i < bebidas.size() ; i++){
-                JSONObject jsonBebida = (JSONObject) bebidas.get(i);
-                String sBebida = (String) jsonBebida.get("Nombre");
-                tMenu.append(sBebida + " -- ");
-                sBebida = (String) jsonBebida.get("Codigo");
-                tMenu.append(sBebida + " -- ");
-                sBebida = (String) jsonBebida.get("Precio");
-                tMenu.append("₡" + sBebida  + " -- ");
-                sBebida = (String) jsonBebida.get("Tamaño");
-                tMenu.append(sBebida + " -- ");
-                sBebida = (String) jsonBebida.get("Tipo");
-                tMenu.append(sBebida);
-                tMenu.append("\n");
-               
-            }
-            tMenu.append("\n");
-            
-            /*
-            En esta parte obtiene la parte de Platos Fuertes del menu
-            */
-            
-            
-            tMenu.append(" - - - - - - - - - - - - - - - - -"
-                    + " Platos Fuertes "
-                    + "- - - - - - - - - - - - - - - - -"
-                    + " Nombre - - - Codigo - - - Precio - - - Tamaño \n" 
-                    + " - - - - - - - - - - - - - - - - - - - - - - - "
-                    + "- - - - - - - - - - - - - - - - - - - - - - - \n");
-            
-            for (int i = 0; i < platoFuerte.size() ; i++){
-                JSONObject jsonPFuerte = (JSONObject) platoFuerte.get(i);
-                String sPFuerte = (String) jsonPFuerte.get("Nombre");
-                tMenu.append(sPFuerte + " -- ");
-                sPFuerte = (String) jsonPFuerte.get("Codigo");
-                tMenu.append(sPFuerte + " -- ");
-                sPFuerte = (String) jsonPFuerte.get("Precio");
-                tMenu.append("₡" + sPFuerte  + " -- ");
-                sPFuerte = (String) jsonPFuerte.get("Tamaño");
-                tMenu.append(sPFuerte);
+
+                for (int i = 0; i < bebidas.size() ; i++){
+                    JSONObject jsonBebida = (JSONObject) bebidas.get(i);
+                    String sBebida = (String) jsonBebida.get("Nombre");
+                    tMenu.append(sBebida + " -- ");
+                    sBebida = (String) jsonBebida.get("Codigo");
+                    tMenu.append(sBebida + " -- ");
+                    sBebida = (String) jsonBebida.get("Precio");
+                    tMenu.append("₡" + sBebida  + " -- ");
+                    sBebida = (String) jsonBebida.get("Tamaño");
+                    tMenu.append(sBebida + " -- ");
+                    sBebida = (String) jsonBebida.get("Tipo");
+                    tMenu.append(sBebida);
+                    tMenu.append("\n");
+
+                }
                 tMenu.append("\n");
 
-            }
-            tMenu.append("\n");
-            
-            /*
-            En esta parte obtiene la parte de Acompañamientos del menu
-            */
-            tMenu.append(" - - - - - - - - - - - - - - - - "
-                    + " Acompañamientos "
-                    + "- - - - - - - - - - - - - - - "
-                    + " Nombre - - - Codigo - - - Precio - - - Tipo \n" 
-                    + " - - - - - - - - - - - - - - - - - - - - - - - "
-                    + "- - - - - - - - - - - - - - - - - - - - - - - \n");
-            
-            for (int i = 0; i < acompañamientos.size() ; i++){
-                JSONObject jsonAcompañamiento = (JSONObject) acompañamientos.get(i);
-                String sAcompañamiento = (String) jsonAcompañamiento.get("Nombre");
-                tMenu.append(sAcompañamiento + " -- ");
-                sAcompañamiento = (String) jsonAcompañamiento.get("Codigo");
-                tMenu.append(sAcompañamiento + " -- ");
-                sAcompañamiento = (String) jsonAcompañamiento.get("Precio");
-                tMenu.append("₡" + sAcompañamiento  + " -- ");
-                sAcompañamiento = (String) jsonAcompañamiento.get("Tipo");
-                tMenu.append(sAcompañamiento);
+                /*
+                En esta parte obtiene la parte de Platos Fuertes del menu
+                */
+
+
+                tMenu.append(" - - - - - - - - - - - - - - - - -"
+                        + " Platos Fuertes "
+                        + "- - - - - - - - - - - - - - - - -\n"
+                        + " Nombre - - - Codigo - - - Precio - - - Tamaño \n" 
+                        + " - - - - - - - - - - - - - - - - - - - - - - - "
+                        + "- - - - - - - - - - - - - - - - - - - - - - - \n");
+
+                for (int i = 0; i < platoFuerte.size() ; i++){
+                    JSONObject jsonPFuerte = (JSONObject) platoFuerte.get(i);
+                    String sPFuerte = (String) jsonPFuerte.get("Nombre");
+                    tMenu.append(sPFuerte + " -- ");
+                    sPFuerte = (String) jsonPFuerte.get("Codigo");
+                    tMenu.append(sPFuerte + " -- ");
+                    sPFuerte = (String) jsonPFuerte.get("Precio");
+                    tMenu.append("₡" + sPFuerte  + " -- ");
+                    sPFuerte = (String) jsonPFuerte.get("Tamaño");
+                    tMenu.append(sPFuerte);
+                    tMenu.append("\n");
+
+                }
                 tMenu.append("\n");
-            }
-            tMenu.append("\n"); 
-        } catch (FileNotFoundException e){}
-        catch (IOException | ParseException e) {}
+
+                /*
+                En esta parte obtiene la parte de Acompañamientos del menu
+                */
+                tMenu.append(" - - - - - - - - - - - - - - - - "
+                        + " Acompañamientos "
+                        + "- - - - - - - - - - - - - - - \n"
+                        + " Nombre - - - Codigo - - - Precio - - - Tipo \n" 
+                        + " - - - - - - - - - - - - - - - - - - - - - - - "
+                        + "- - - - - - - - - - - - - - - - - - - - - - - \n");
+
+                for (int i = 0; i < acompañamientos.size() ; i++){
+                    JSONObject jsonAcompañamiento = (JSONObject) acompañamientos.get(i);
+                    String sAcompañamiento = (String) jsonAcompañamiento.get("Nombre");
+                    tMenu.append(sAcompañamiento + " -- ");
+                    sAcompañamiento = (String) jsonAcompañamiento.get("Codigo");
+                    tMenu.append(sAcompañamiento + " -- ");
+                    sAcompañamiento = (String) jsonAcompañamiento.get("Precio");
+                    tMenu.append("₡" + sAcompañamiento  + " -- ");
+                    sAcompañamiento = (String) jsonAcompañamiento.get("Tipo");
+                    tMenu.append(sAcompañamiento);
+                    tMenu.append("\n");
+                }
+                tMenu.append("\n"); 
+            } catch (FileNotFoundException e){}
+            catch (IOException | ParseException e) {}
+        } 
     }//GEN-LAST:event_bCargarMenuActionPerformed
+
+    private void bCrearClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCrearClientesActionPerformed
+       colaCliente = new LinkedList();
+       
+       int cantidadClientes = Integer.parseInt(eClientes.getText());
+       int clientesEspeciales = (int) Math.floor(Math.random() * cantidadClientes );
+      
+       for(int i = 0; i < (cantidadClientes - clientesEspeciales) ; i++){
+           colaCliente.add(new Cliente(20));
+       }
+       
+       for (int i = 0; i < clientesEspeciales; i++){
+           colaCliente.add(new ClienteEspecial(50,20));
+       }
+       
+       
+       
+       
+    }//GEN-LAST:event_bCrearClientesActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -340,6 +393,8 @@ public class Inicio extends JFrame {
     public javax.swing.JButton bCrearClientes;
     public javax.swing.JButton bExit;
     public javax.swing.JTextField eClientes;
+    public javax.swing.JButton jButton1;
+    public javax.swing.JLabel jLabel1;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel lCanClientes;
     public javax.swing.JPanel pCenter;
