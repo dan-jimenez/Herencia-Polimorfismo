@@ -2,7 +2,7 @@
    "Bebidas" : [
         {
             "Nombre" : "Coca Cola",
-            "Codigo" : "1",
+            "Codigo" : "0",
             "Precio" : "900",
             "Tamaño" : "330 ml",
             "Tipo" : "Frio",
@@ -11,7 +11,7 @@
         },
         {
             "Nombre" : "Té de Frutos Rojos",
-            "Codigo" : "2",
+            "Codigo" : "1",
             "Precio" : "700",
             "Tamaño" : "250 ml",
             "Tipo" : "Caliente",
@@ -20,7 +20,7 @@
         },
         {
             "Nombre" : "Pilsen 6.0",
-            "Codigo" : "3",
+            "Codigo" : "2",
             "Precio" : "900",
             "Tamaño" : "200 ml",
             "Tipo" : "Frio",
@@ -29,7 +29,7 @@
         }, 
         {
             "Nombre" : "Cafe Expresso",
-            "Codigo" : "4",
+            "Codigo" : "3",
             "Precio" : "500",
             "Tamaño" : "250 ml",
             "Tipo" : "Caliente",
@@ -42,28 +42,28 @@
     
         {
             "Nombre" : "Papas Fritas",
-            "Codigo" : "5",
+            "Codigo" : "4",
             "Tipo" : "Salado",
             "Tiempo P" : "30",
             "Precio" : "1000"
         },
         {
             "Nombre" : "Patacones",
-            "Codigo" : "6",
+            "Codigo" : "5",
             "Tipo" : "Salado",
             "Tiempo P" : "40",
             "Precio" : "1200"
         },
         {
             "Nombre" : "Ensalada Dulce",
-            "Codigo" : "7",
+            "Codigo" : "6",
             "Tipo" : "Dulce",
             "Tiempo P" : "40",
             "Precio" : "2300"
         },
         {
             "Nombre" : "Ensalada de mango",
-            "Codigo" : "8",
+            "Codigo" : "7",
             "Tipo" : "Salado",
             "Tiempo P" : "30",
             "Precio" : "2000"
@@ -73,28 +73,28 @@
     "Platos Fuertes" : [
         {
             "Nombre" : "Hamburguesa",
-            "Codigo" : "9",
+            "Codigo" : "8",
             "Precio" : "2000",
             "Tiempo p" : "100",
             "Tamaño" : "Entero"
         },
         {
             "Nombre" : "Casado",
-            "Codigo" : "10",
+            "Codigo" : "9",
             "Precio" : "3000",
             "Tiempo p" : "150",
             "Tamaño" : "Entero"
         },
         {
             "Nombre" : "Arroz Cantones",
-            "Codigo" : "11",
+            "Codigo" : "10",
             "Precio" : "1800",
             "Tiempo p" : "180",
             "Tamaño" : "Medio"
         },
         {
             "Nombre" : "Arroz con Camarones",
-            "Codigo" : "12",
+            "Codigo" : "11",
             "Precio" : "3000",
             "Tiempo p" : "200",
             "Tamaño" : "Medio"
