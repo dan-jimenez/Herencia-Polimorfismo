@@ -622,7 +622,7 @@ public class Inicio extends JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        Produccion cProduccion = new Produccion();
        
-       cProduccion.hacerPedido(colaCliente[0].ordenar() , "1");
+       cProduccion.hacerPedido(colaCliente[0].ordenar() , String.valueOf(colaCliente[0].getNumeroCliente()));
        
     }//GEN-LAST:event_jButton1ActionPerformed
 

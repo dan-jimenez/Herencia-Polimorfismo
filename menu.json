@@ -6,7 +6,7 @@
             "Precio" : "900",
             "Tamaño" : "330 ml",
             "Tipo" : "Frio",
-            "Tiempo P" : "0"
+            "Tiempo" : "0"
             
         },
         {
@@ -15,7 +15,7 @@
             "Precio" : "700",
             "Tamaño" : "250 ml",
             "Tipo" : "Caliente",
-            "Tiempo P" : "10"
+            "Tiempo" : "10"
             
         },
         {
@@ -24,7 +24,7 @@
             "Precio" : "900",
             "Tamaño" : "200 ml",
             "Tipo" : "Frio",
-            "Tiempo P" : "0"
+            "Tiempo" : "0"
             
         }, 
         {
@@ -33,7 +33,7 @@
             "Precio" : "500",
             "Tamaño" : "250 ml",
             "Tipo" : "Caliente",
-            "Tiempo P" : "10"
+            "Tiempo" : "10"
             
         }
     ],
@@ -44,28 +44,28 @@
             "Nombre" : "Papas Fritas",
             "Codigo" : "4",
             "Tipo" : "Salado",
-            "Tiempo P" : "30",
+            "Tiempo" : "30",
             "Precio" : "1000"
         },
         {
             "Nombre" : "Patacones",
             "Codigo" : "5",
             "Tipo" : "Salado",
-            "Tiempo P" : "40",
+            "Tiempo" : "40",
             "Precio" : "1200"
         },
         {
             "Nombre" : "Ensalada Dulce",
             "Codigo" : "6",
             "Tipo" : "Dulce",
-            "Tiempo P" : "40",
+            "Tiempo" : "40",
             "Precio" : "2300"
         },
         {
             "Nombre" : "Ensalada de mango",
             "Codigo" : "7",
             "Tipo" : "Salado",
-            "Tiempo P" : "30",
+            "Tiempo" : "30",
             "Precio" : "2000"
         }
     ],
@@ -75,28 +75,28 @@
             "Nombre" : "Hamburguesa",
             "Codigo" : "8",
             "Precio" : "2000",
-            "Tiempo p" : "100",
+            "Tiempo" : "100",
             "Tamaño" : "Entero"
         },
         {
             "Nombre" : "Casado",
             "Codigo" : "9",
             "Precio" : "3000",
-            "Tiempo p" : "150",
+            "Tiempo" : "150",
             "Tamaño" : "Entero"
         },
         {
             "Nombre" : "Arroz Cantones",
             "Codigo" : "10",
             "Precio" : "1800",
-            "Tiempo p" : "180",
+            "Tiempo" : "180",
             "Tamaño" : "Medio"
         },
         {
             "Nombre" : "Arroz con Camarones",
             "Codigo" : "11",
             "Precio" : "3000",
-            "Tiempo p" : "200",
+            "Tiempo" : "200",
             "Tamaño" : "Medio"
         }
     
