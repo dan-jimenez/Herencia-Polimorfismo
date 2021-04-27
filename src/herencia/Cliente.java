@@ -17,6 +17,10 @@ public class Cliente {
     public int[] ordenar(){
         int numeroProductos = (int) Math.floor(Math.random() * 10);
         
+        while(numeroProductos == 0){
+            numeroProductos = (int) Math.floor(Math.random() * 10);
+        }
+        
         int[] productos = new int[numeroProductos];
         
         for (int i = 0; i < productos.length; i++){

@@ -1,6 +1,7 @@
 
 package herencia;
 
+import static herencia.PrincipalClass.principalWindow;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -22,6 +23,7 @@ public class Produccion {
     
     
     
+    @SuppressWarnings("empty-statement")
     public String[] hacerPedido(int[] productos, String cliente){
         JSONParser parser = new JSONParser();
         
@@ -89,14 +91,14 @@ public class Produccion {
             }
         }catch (FileNotFoundException e){} catch (IOException | ParseException e) {}
         
-        orden[productos.length] = "Orden del Cliente: " + cliente;
-        
-        
-        System.out.println(orden[productos.length] + "\n");
+        principalWindow.tPedidosPendientes.append("Orden del cliente: " + cliente + " \n\n" );
         for(int i = 0; i < orden.length - 1; i++){
-            System.out.println(orden[i]);
+            principalWindow.tPedidosPendientes.append(orden[i] + " \n");
+            
         }
-        System.out.println("\n");
+        principalWindow.tPedidosPendientes.append("\n" +
+                "- - - - - - - - - - - - - - - - - - - - - - - - - - -"
+                + " - - - - - - - - - - - - - - - " );
 
         return orden;
     }
