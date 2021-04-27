@@ -17,6 +17,7 @@ import org.json.simple.parser.ParseException;
 public class Inicio extends JFrame {
     
     private  Cliente[] colaCliente;
+    private int paso;
     
     public Inicio() {
         initComponents();
@@ -40,7 +41,7 @@ public class Inicio extends JFrame {
         lCanClientes = new javax.swing.JLabel();
         eClientes = new javax.swing.JTextField();
         bCrearClientes = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        bSiguientePaso = new javax.swing.JButton();
         icono = new javax.swing.JLabel();
         pCenter = new javax.swing.JPanel();
         lCliente1 = new javax.swing.JLabel();
@@ -139,14 +140,14 @@ public class Inicio extends JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jButton1.setText(bundle.getString("Inicio.jButton1.text")); // NOI18N
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        bSiguientePaso.setBackground(new java.awt.Color(255, 255, 255));
+        bSiguientePaso.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        bSiguientePaso.setText(bundle.getString("Inicio.bSiguientePaso.text")); // NOI18N
+        bSiguientePaso.setBorder(null);
+        bSiguientePaso.setBorderPainted(false);
+        bSiguientePaso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                bSiguientePasoActionPerformed(evt);
             }
         });
 
@@ -163,7 +164,7 @@ public class Inicio extends JFrame {
                 .addGroup(pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pLeftLayout.createSequentialGroup()
                         .addGroup(pLeftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bSiguientePaso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(pLeftLayout.createSequentialGroup()
                                 .addComponent(bCargarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(24, 24, 24)
@@ -195,7 +196,7 @@ public class Inicio extends JFrame {
                     .addComponent(bCrearClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bCargarMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bSiguientePaso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -630,21 +631,29 @@ public class Inicio extends JFrame {
        
     }//GEN-LAST:event_bCrearClientesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void bSiguientePasoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSiguientePasoActionPerformed
        Produccion cProduccion = new Produccion();
+       paso = 0;
+       switch(paso){
+           case 0:
+               cProduccion.hacerPedido(colaCliente[0].ordenar() , String.valueOf(colaCliente[0].getNumeroCliente()));
+               paso++;
+               break;
+           case 1:
+               break;      
+       }
        
-       cProduccion.hacerPedido(colaCliente[0].ordenar() , String.valueOf(colaCliente[0].getNumeroCliente()));
        
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_bSiguientePasoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bCargarMenu;
     public javax.swing.JButton bCrearClientes;
     public javax.swing.JButton bExit;
+    public javax.swing.JButton bSiguientePaso;
     public javax.swing.JTextField eClientes;
     public javax.swing.JLabel icono;
-    public javax.swing.JButton jButton1;
     public javax.swing.JLabel jLabel1;
     public javax.swing.JLabel jLabel11;
     public javax.swing.JLabel jLabel2;
